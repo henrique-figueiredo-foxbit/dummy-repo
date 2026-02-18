@@ -1,13 +1,26 @@
-name: Run Tests
+name: Run Deploy Test
+
+run-name: Deploy on ${{ inputs.ENV }} (${{ github.head_ref || github.ref_name }})
 
 on:
   workflow_dispatch:
-
+    inputs:
+      ENV:
+        description: "Environment to deploy"
+        required: true
+        type: choice
+        options:
+          - andromeda
+          - draco
+          - orion
+          - pallaxs
+          - lyra
+          - homolog
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Run Test
-      run: echo test
+      - uses: actions/checkout@v4
+      - name: Run Deploy test
+        run: echo ${{ inputs.ENV }} 
