@@ -10,7 +10,7 @@ on:
         required: true
         type: choice
         options:
-          - kepler
+          - dummy-repo
       ENV:
         description: "Environment to deploy"
         required: true
